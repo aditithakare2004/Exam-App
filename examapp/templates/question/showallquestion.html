@@ -1,0 +1,169 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show all question</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 3px solid greenyellow;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+    </style>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/questions.css' %}">
+</head>
+
+<body>
+   <a href="/examapp/giveaddquestion/"> Add Question</a> &nbsp; &nbsp; 
+    <a href="/examapp/giveviewquestion/">View Question</a> &nbsp; &nbsp; 
+    <a href="/examapp/giveupdatequestion/"> Update Question</a> &nbsp; &nbsp; 
+    <a href="/examapp/givedeletequestion/"> Delete Question</a> &nbsp; &nbsp;
+    <a href="/examapp/givemeshowallquestion/"> Show All Questions</a> &nbsp; &nbsp;
+    <a href="/examapp/">Home Page</a>
+
+    <hr>
+    <table>
+        <tr>
+            <th>Question no</th>
+            <th>Question text</th>
+            <th>Option_1</th>
+            <th>Option_2</th>
+            <th>Option_3</th>
+            <th>Option_4</th>
+            <th>Subject</th>
+            <th>Answer</th>
+        </tr>
+        {% for qd in qdata %}
+        <tr>
+            <td>{{qd.qno}}</td>
+            <td>{{qd.qtext}}</td>
+            <td>{{qd.op1}}</td>
+            <td>{{qd.op2}}</td>
+            <td>{{qd.op3}}</td>
+            <td>{{qd.op4}}</td>
+            <td>{{qd.subject}}</td>
+            <td>{{qd.ans}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Questions</title>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .navbar-custom {
+            background: #343a40;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: white;
+        }
+
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🔝 Navbar -->
+<nav class="navbar navbar-custom px-4">
+    <span class="navbar-brand">Question Management</span>
+
+    <a href="/examapp/" class="btn btn-light">
+        <i class="bi bi-house"></i> Home
+    </a>
+</nav>
+
+<!-- 🔗 Navigation -->
+<div class="container mt-4 text-center">
+    <a href="/examapp/giveaddquestion/" class="btn btn-primary">Add</a>
+    <a href="/examapp/giveviewquestion/" class="btn btn-success">View</a>
+    <a href="/examapp/giveupdatequestion/" class="btn btn-warning">Update</a>
+    <a href="/examapp/givedeletequestion/" class="btn btn-danger">Delete</a>
+    <a href="/examapp/givemeshowallquestion/" class="btn btn-dark">All Questions</a>
+</div>
+
+<!-- 📊 Table Section -->
+<div class="container mt-4">
+    <div class="table-container">
+
+        <h4 class="text-center mb-4">All Questions</h4>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover text-center align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Q.No</th>
+                        <th>Question</th>
+                        <th>Option 1</th>
+                        <th>Option 2</th>
+                        <th>Option 3</th>
+                        <th>Option 4</th>
+                        <th>Subject</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for qd in qdata %}
+                    <tr>
+                        <td>{{qd.qno}}</td>
+                        <td>{{qd.qtext}}</td>
+                        <td>{{qd.op1}}</td>
+                        <td>{{qd.op2}}</td>
+                        <td>{{qd.op3}}</td>
+                        <td>{{qd.op4}}</td>
+                        <td>
+                            <span class="badge bg-info text-dark">
+                                {{qd.subject}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-success">
+                                {{qd.ans}}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

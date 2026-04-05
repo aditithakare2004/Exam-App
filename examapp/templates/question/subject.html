@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/questions.css' %}">
+
+</head>
+<body>
+        <span>Welcome {{request.session.username}}</span>
+        <br><br><hr>
+    <form >
+        Subject : <select name="subject">
+            <option >Select a subject</option>
+            <option >python</option>
+            <option >math</option>
+        </select> <br><br><br>
+
+        <input type="submit" value="Start Test" formaction="/examapp/starttest">
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Test</title>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            min-height: 100vh;
+        }
+
+        .test-card {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Card -->
+<div class="test-card text-center">
+
+    <h4 class="mb-3">👋 Welcome {{request.session.username}}</h4>
+    <p class="text-muted">Select subject to start your test</p>
+
+    <form method="GET">
+
+        <div class="mb-3">
+            <label class="form-label">Choose Subject</label>
+            <select name="subject" class="form-select">
+                <option disabled selected>Select a subject</option>
+                <option value="python">Python</option>
+                <option value="math">Math</option>
+            </select>
+        </div>
+
+        <div class="d-grid">
+            <button class="btn btn-primary" formaction="/examapp/starttest">
+                🚀 Start Test
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
